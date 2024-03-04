@@ -1,0 +1,10 @@
+.logo {
+    font-size: 2rem;
+    gap: 20px;
+}
+
+.invalid {
+    margin-bottom: 1px;
+    color: red;
+    font-weight: 300;
+}

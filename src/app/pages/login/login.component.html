@@ -1,0 +1,66 @@
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+            <div class="card">
+                <div class="row g-0">
+                    <div class="col-md-6 col-lg-5 d-none d-md-block">
+                        <img src="https://images.pexels.com/photos/6796574/pexels-photo-6796574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt="login form" class="img-fluid" />
+                    </div>
+                    <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                        <div class="card-body p-4 p-lg-5 text-black">
+                            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                <div class="d-flex align-items-center mb-3 pb-1 logo">
+                                    <i class="bi bi-4-square"></i>
+                                    <h1>Login</h1>
+                                </div>
+                                <h5 class="fw-normal mb-3 pb-3">Inicia Sesion</h5>
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="usuario" formControlName="usuario"
+                                        class="form-control form-control-lg" />
+                                    <div *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)">
+                                        <div *ngIf="usuario.errors?.['required']">
+                                            <p class="small invalid">Campo Obligatorio</p>
+                                        </div>
+                                    </div>
+                                    <label class="form-label" for="usuario">Usuario</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="password" formControlName="contraseña"
+                                        class="form-control form-control-lg" />
+                                    <div *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)">
+                                        <div *ngIf="usuario.errors?.['required']">
+                                            <p class="small invalid">Campo Obligatorio</p>
+                                        </div>
+                                    </div>
+                                    <label class="form-label" for="form2Example27">Contraseña</label>
+                                </div>
+
+                                <div class="pt-1 mb-4">
+                                    <button class="btn btn-dark btn-lg btn-block" type="submit"
+                                        [disabled]="!loginForm.valid">Inicio</button>
+                                </div>
+                                <a class="small text-muted" (click)="open(demoModal)">Recuperar contraseña</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<ng-template #demoModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Recuperar contraseña</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <p>Para recuperar tu contraseña por favor comunicate con el administrador</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cerrar</button>
+    </div>
+</ng-template>

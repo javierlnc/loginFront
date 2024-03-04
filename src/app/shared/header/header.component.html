@@ -6,9 +6,24 @@
         </a>
     </div>
     <div class="">
-        <a class="help" href="">
+        <a class="help" (click)="open(helpModal)">
             <i class="bi bi-question-circle" alt="dino-label"></i>
         </a>
     </div>
 
 </nav>
+<ng-template #helpModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Ayuda</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <p>Para visualizar el programa y sus diferentes opciones, debes iniciar sesion</p>
+    </div>
+    <div class="modal-footer  flex-nowrap">
+        <p class="small text-muted">Si no puedes ingresar comunicate con el administrador del sistema</p>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cerrar</button>
+    </div>
+
+</ng-template>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/services/auth/login.service';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +13,15 @@ export class LoginComponent {
     usuario: new FormControl('', [Validators.required]),
     contraseña: new FormControl('', Validators.required),
   });
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private loginServies: LoginService) {
   }
   public open(modal: any): void {
     this.modalService.open(modal);
   }
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.loginForm.value);
+    if(this.loginForm.valid){
+      
+    }
   }
   get usuario() { return this.loginForm.controls.usuario; }
 }

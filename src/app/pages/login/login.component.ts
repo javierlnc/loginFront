@@ -22,7 +22,17 @@ export class LoginComponent {
   }
   onSubmit() {
     if(this.loginForm.valid){
-      this.loginServies.login(this.loginForm.value as LoginRequest);
+      this.loginServies.login(this.loginForm.value as LoginRequest).subscribe({
+        next(UserData) {
+          console.log(UserData);
+        },
+        error(err) {
+          console.error("ha ocurrido un error: " + err);
+        },
+        complete() {
+          console.log("listo");
+        },
+      });
       this.loginForm.reset();
       this.router.navigateByUrl('/home');
 

@@ -11,6 +11,7 @@ import { LoginRequest } from 'src/app/services/auth/loginRequest';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  loginError?: String;
   loginForm = new FormGroup({
     usuario: new FormControl('', [Validators.required]),
     contraseña: new FormControl('', Validators.required),
@@ -29,6 +30,7 @@ export class LoginComponent {
         },
         error:(err) => {
           console.error("ha ocurrido un error: " + err);
+          this.loginError = err;
           this.loginForm.reset();
         },
         complete:() => {

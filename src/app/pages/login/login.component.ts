@@ -23,18 +23,21 @@ export class LoginComponent {
   onSubmit() {
     if(this.loginForm.valid){
       this.loginServies.login(this.loginForm.value as LoginRequest).subscribe({
-        next(UserData) {
+        next:(UserData) => {
           console.log(UserData);
+          
         },
-        error(err) {
+        error:(err) => {
           console.error("ha ocurrido un error: " + err);
+          this.loginForm.reset();
         },
-        complete() {
+        complete:() => {
           console.log("listo");
+          this.loginForm.reset();
+          this.router.navigateByUrl('/home');
         },
       });
-      this.loginForm.reset();
-      this.router.navigateByUrl('/home');
+     
 
     }else{
       this.loginForm.markAllAsTouched();
